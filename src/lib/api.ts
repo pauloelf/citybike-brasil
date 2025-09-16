@@ -1,4 +1,4 @@
-import type { Network } from "@/@types/network"
+import type { Network, Station } from "@/@types/network"
 import api from "./axios"
 
 export const fetchNetworks = async () => {
@@ -11,4 +11,10 @@ export const fetchNetworks = async () => {
       }),
     )
   return brazilianNetworks
+}
+
+export const fetchNetwork = async (id: string) => {
+  const response = await api.get(`/v2/networks/${encodeURIComponent(id)}`)
+  const network: Network = response.data.network
+  return network
 }
