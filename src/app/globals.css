@@ -43,3 +43,8 @@ body {
 p {
   color: var(--muted-foreground);
 }
+
+.leaflet-container {
+  width: 100vw;
+  height: 100vh;
+}
