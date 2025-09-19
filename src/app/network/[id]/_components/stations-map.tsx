@@ -4,16 +4,24 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
 import type { Station } from "@/@types/network"
 import "leaflet/dist/leaflet.css"
 import { Icon, type LatLngExpression } from "leaflet"
+import { getStationStatus, getStatusColor, getStatusText } from "@/lib/utils"
 
 interface StationsMapProps {
   stations: Station[]
   location: LatLngExpression
 }
 
-const icon = new Icon({
-  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-  iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+const iconAvailable = new Icon({
+  iconUrl: "/icons/blue-marker.png",
+  iconSize: [32, 32],
+})
+const iconOffline = new Icon({
+  iconUrl: "/icons/gray-marker.png",
+  iconSize: [32, 32],
+})
+const iconFull = new Icon({
+  iconUrl: "/icons/red-marker.png",
+  iconSize: [32, 32],
 })
 
 export function StationsMap({ stations, location }: StationsMapProps) {
@@ -22,19 +30,37 @@ export function StationsMap({ stations, location }: StationsMapProps) {
       <MapContainer center={location} className="space-y-6 pt-6" zoom={13}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          className="text-center"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {stations.map((station) => (
-          <Marker
-            icon={icon}
-            key={station.id}
-            position={[station.latitude, station.longitude]}
-          >
-            <Popup>
-              {station.name} <br /> {station.extra.address}
-            </Popup>
-          </Marker>
-        ))}
+        {stations.map((station) => {
+          const status = getStationStatus(
+            station.free_bikes,
+            station.empty_slots,
+          )
+          const icon =
+            status === "available"
+              ? iconAvailable
+              : status === "full"
+                ? iconFull
+                : iconOffline
+
+          return (
+            <Marker
+              icon={icon}
+              key={station.id}
+              position={[station.latitude, station.longitude]}
+            >
+              <Popup>
+                {station.name} |{" "}
+                <span style={{ color: getStatusColor(status) }}>
+                  {getStatusText(status)}
+                </span>{" "}
+                <br /> {station.extra.address}
+              </Popup>
+            </Marker>
+          )
+        })}
       </MapContainer>
     </div>
   )
