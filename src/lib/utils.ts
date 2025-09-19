@@ -1,3 +1,5 @@
+import type { StationStatus } from "@/@types/network"
+
 export function getStationStatus(freeBikes: number, emptySlots: number) {
   if (
     typeof freeBikes !== "number" ||
@@ -49,5 +51,27 @@ export function formatLastUpdate(timestamp: number) {
   } catch (error) {
     console.error("Error formatting timestamp:", error)
     return "Data inválida"
+  }
+}
+
+export const getStatusColor = (status: StationStatus) => {
+  switch (status) {
+    case "available":
+      return "var(--bike-available)"
+    case "full":
+      return "var(--bike-full)"
+    case "offline":
+      return "var(--bike-offline)"
+  }
+}
+
+export const getStatusText = (status: StationStatus) => {
+  switch (status) {
+    case "available":
+      return "Disponível"
+    case "full":
+      return "Lotada"
+    case "offline":
+      return "Offline"
   }
 }

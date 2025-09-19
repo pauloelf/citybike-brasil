@@ -1,7 +1,12 @@
 "use client"
 
 import type { Station } from "@/@types/network"
-import { formatLastUpdate, getStationStatus } from "@/lib/utils"
+import {
+  formatLastUpdate,
+  getStationStatus,
+  getStatusColor,
+  getStatusText,
+} from "@/lib/utils"
 
 interface StationCardProps {
   station: Station
@@ -10,28 +15,6 @@ interface StationCardProps {
 export function StationCard({ station }: StationCardProps) {
   const status = getStationStatus(station.free_bikes, station.empty_slots)
   const lastUpdate = formatLastUpdate(station.extra.last_updated * 1000)
-
-  const getStatusColor = () => {
-    switch (status) {
-      case "available":
-        return "var(--bike-available)"
-      case "full":
-        return "var(--bike-full)"
-      case "offline":
-        return "var(--bike-offline)"
-    }
-  }
-
-  const getStatusText = () => {
-    switch (status) {
-      case "available":
-        return "Disponível"
-      case "full":
-        return "Lotada"
-      case "offline":
-        return "Offline"
-    }
-  }
 
   return (
     <article className="space-y-3 bg-card hover:shadow-md p-4 border border-border rounded-lg transition-shadow">
@@ -46,7 +29,7 @@ export function StationCard({ station }: StationCardProps) {
         </div>
         <div
           className="flex-shrink-0 mt-0.5 ml-2 rounded-full w-3 h-3"
-          style={{ backgroundColor: getStatusColor() }}
+          style={{ backgroundColor: getStatusColor(status) }}
         ></div>
       </div>
 
@@ -67,8 +50,11 @@ export function StationCard({ station }: StationCardProps) {
 
       <div className="pt-2 border-t border-border">
         <div className="flex justify-between items-center text-xs">
-          <span className="font-medium" style={{ color: getStatusColor() }}>
-            {getStatusText()}
+          <span
+            className="font-medium"
+            style={{ color: getStatusColor(status) }}
+          >
+            {getStatusText(status)}
           </span>
           <span className="text-muted-foreground">{lastUpdate}</span>
         </div>
