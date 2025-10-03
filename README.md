@@ -2,7 +2,8 @@
 
 Este repositório contém o código-fonte do projeto **CityBike**, uma aplicação voltada para visualizar estações de bicicletas compartilhadas em cidades brasileiras, com foco em mobilidade urbana e acessibilidade.
 
-🔗 Leia o post completo sobre este projeto: [CityBike — Mapeamento de estações de bicicletas compartilhadas](https://commit-blog-paulodev.vercel.app/topicos/city-bike-brasil-mobilidade-urbana-em-tempo-real)
+🔗 **Leia o post completo sobre este projeto:**  
+[CityBike — Mapeamento de estações de bicicletas compartilhadas](https://commit-blog-paulodev.vercel.app/topicos/city-bike-brasil-mobilidade-urbana-em-tempo-real)
 
 ## Sobre o projeto
 
