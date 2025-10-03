@@ -1,36 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CityBike — Mapeamento de estações de bicicletas compartilhadas
 
-## Getting Started
+Este repositório contém o código-fonte do projeto **CityBike**, uma aplicação voltada para visualizar estações de bicicletas compartilhadas em cidades brasileiras, com foco em mobilidade urbana e acessibilidade.
 
-First, run the development server:
+🔗 Leia o post completo sobre este projeto: [CityBike — Mapeamento de estações de bicicletas compartilhadas](https://commit-blog-paulodev.vercel.app/topicos/city-bike-brasil-mobilidade-urbana-em-tempo-real)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Sobre o projeto
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+CityBike é uma ferramenta simples e funcional para explorar estações de bikes compartilhadas, criada com o objetivo de tornar o acesso à mobilidade urbana mais fácil e visual. A aplicação utiliza dados públicos e oferece uma interface direta e responsiva.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Autor
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Paulo Sérgio  
+[LinkedIn](https://www.linkedin.com/in/paulosergioelf) • [GitHub](https://github.com/pauloelf)
